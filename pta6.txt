@@ -32,7 +32,7 @@ int main()
   scanf("%ld",&n);
   printf("%ld\n",fun(n));
   return 0;
-}
+}//逆序输出
 long fun(long n)
 {
 
@@ -44,6 +44,24 @@ long fun(long n)
         y*=t;
     }
     return y;
+}//正序输出
+long fun(long num)
+{
+    int mask=1;
+    int d,t,sum=1;
+    t=num;
+    while(t>9){
+        t/=10;
+        mask*=10;
+    }
+    while(mask>0)
+    {
+        d=num/mask;
+        sum*=d;
+        num%=mask;
+        mask/=10;
+    }
+    return sum;
 }
 //6-2 编写判断同构数的函数
 /*
