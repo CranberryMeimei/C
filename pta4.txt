@@ -36,21 +36,21 @@ int main(void)
        d=y/100%10*10+y/1000;//02,2
        switch(m){
                     case 1:
-		    		case 3:
-					case 5:	
-					case 7:
-					case 8:	 
-					case 10:
-			    	case 12:
-       						if(d<=31)
+		    case 3:
+		    case 5:	
+		    case 7:
+	            case 8:	 
+		    case 10:
+		    case 12:
+       			    if(d<=31)
                             printf("%d",10000*y+100*m+d);
-							else printf("none");
+			    else printf("none");
                             break;
                     case 4:
-					case 6:	
-					case 9:
-					case 11:
-					        if(d<=30)
+	            case 6:	
+		    case 9:
+		    case 11:
+			    if(d<=30)
                             printf("%d",10000*y+100*m+d);
                             else printf("none");
                             break;
@@ -59,13 +59,13 @@ int main(void)
                                 if(d<=29)
                                	printf("%d",10000*y+100*m+d);
                                 else printf("none");
-                        	}
-                        	else
+                            }
+                            else
                             {
-                                	if(d<=28)
-                               	    printf("%d",10000*y+100*m+d);
-                                	else  printf("none");
-                    		}
+                                if(d<=28)
+                                printf("%d",10000*y+100*m+d);
+                                else  printf("none");
+                    	    }
                                 break;
                     default:
                             printf("none");
