@@ -42,6 +42,35 @@ int main ()
     printf("%d\n",b);
     return 0;
 }
+//法二
+#include <stdio.h>
+int main()
+{
+int r;
+scanf("%d",&r);
+char ch;
+while((ch=getchar())!='=')
+{   int num;
+    scanf("%d",&num);
+    if(ch=='+') r+=num;
+    else if(ch=='-') r-=num;
+    else if(ch=='*') r*=num;
+    else if(ch=='/'){
+        if(num==0){
+            printf("ERROR\n");
+            return 0;
+        }
+        r/=num;
+    }
+    else{
+        printf("ERROR\n");
+        return 0;
+        
+    }
+}
+printf("%d\n",r);
+return 0;
+}
 //7-2 解一元一次方程
 /*
 7-2 解一元一次方程
