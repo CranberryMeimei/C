@@ -160,6 +160,19 @@ int fun(int a,int n)
     }
     return s;
 }
+//法二
+
+int fun(int a,int n)
+{
+    int i,j,sum=0,t=0;
+
+    for(i=0;i<n;i++)//3
+    {
+        t=10*t+a;
+        sum+=t;
+    }
+    return sum;
+}
 //6-4 求正整数n以内的素数之积
 /*
 6-4 求正整数n以内的素数之积
