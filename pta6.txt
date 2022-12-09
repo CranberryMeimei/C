@@ -1,0 +1,198 @@
+//6-1 各位上的数字之积
+/*
+6-1 各位上的数字之积
+分数 10
+作者 王跃萍
+单位 东北石油大学
+函数fun的功能是：计算正整数num的各位上的数字之积。例如，输入252，则输出应该是20。
+
+函数接口定义：
+long fun(long num);
+其中num是用户传入的参数。函数须返回num的各位上的数字之积。
+
+裁判测试程序样例：
+#include<stdio.h>
+long fun(long num);
+int main()
+{
+  long n;
+  scanf("%ld",&n);
+  printf("%ld\n",fun(n));
+  return 0;
+}
+
+
+/* 请在这里填写答案 */
+*/
+#include<stdio.h>
+long fun(long n);
+int main()
+{
+  long n;
+  scanf("%ld",&n);
+  printf("%ld\n",fun(n));
+  return 0;
+}
+long fun(long n)
+{
+
+    int t,y=1;
+    while(n>0)
+    {
+        t=n%10;
+        n=n/10;
+        y*=t;
+    }
+    return y;
+}
+//6-2 编写判断同构数的函数
+/*
+6-2 编写判断同构数的函数
+分数 10
+作者 王跃萍
+单位 东北石油大学
+编写判断同构数的函数，调用该函数找出1—1000之间的全部同构数。（如果一个数和它的平方数的右端相等，此数既为同构数）。
+
+函数接口定义：
+int fun(long n);
+n是用户传入的参数，函数fun的功能是判断n是否是同构数，如果是同构数，函数返回1，否则返回0。
+
+裁判测试程序样例：
+#include <stdio.h>
+int fun(long n);
+int main()
+{
+   int i;
+   for(i=1;i<1000;i++)
+   if(fun(i))  printf("%5d",i);
+   return 0;
+ }
+
+/* 请在这里填写答案 */
+输出样例：
+    1    5    6   25   76  376  625
+*/
+#include <stdio.h>
+int fun(long n);
+int main()
+{
+   int i;
+   for(i=1;i<1000;i++)
+   if(fun(i))  printf("%5d",i);
+   return 0;
+ }
+int fun(long n)
+{
+    long s;
+    s=n*n;
+    if(n==s%10||n==s%100||n==s%1000)
+        return 1;
+    else 
+        return 0;
+}
+//6-3 编写函数计算Sn=a+aa+aaa+…+aa…a
+/*
+6-3 编写函数计算Sn=a+aa+aaa+…+aa…a
+分数 10
+作者 王跃萍
+单位 东北石油大学
+编写函数计算Sn=a+aa+aaa+…+aa…a（最后一项为n个a）。
+
+函数接口定义：
+int fun(int a,int n);
+其中a和n是用户传入的参数，函数fun的功能是求a+aa+aaa+…+aa…a（最后一项为n个a）值并返回。
+
+裁判测试程序样例：
+#include <stdio.h>
+int fun(int a,int n);
+int main()
+{
+  int a,n;
+  scanf("%d%d",&a,&n);
+  printf("%d\n",fun(a,n));
+  return 0;
+ }
+
+/* 请在这里填写答案 */
+输入样例：
+3 4
+输出样例：
+3702
+*/
+#include <stdio.h>
+int fun(int a,int n);
+int main()
+{
+  int a,n;
+  scanf("%d%d",&a,&n);
+  printf("%d\n",fun(a,n));
+  return 0;
+ }
+
+int fun(int a,int n)
+{
+    int i,s,m,j;
+    s=0;
+    for(i=1;i<=n;i++){
+        m=0;
+        for(j=1;j<=i;j++){
+            m=m*10+a;
+        }
+        s=s+m;
+    }
+    return s;
+}
+//6-4 求正整数n以内的素数之积
+/*
+6-4 求正整数n以内的素数之积
+分数 10
+作者 王跃萍
+单位 东北石油大学
+编写函数fun其功能是：求给定正整数n以内的素数之积。(n<28)
+
+函数接口定义：
+long fun(int n);
+其中 n 是用户传入的参数。函数须返回正整数 n 以内的素数之积。
+
+裁判测试程序样例：
+#include <stdio.h>
+long fun(int n);
+int main()
+{
+int  m;
+scanf("%d", &m);
+printf("The result is %ld\n", fun(m));
+return 0;
+ }
+
+
+/* 请在这里填写答案 */
+输入样例：
+20
+输出样例：
+The result is 9699690
+*/
+#include <stdio.h>
+long fun(int n);
+int main()
+{
+int  m;
+scanf("%d", &m);
+printf("The result is %ld\n", fun(m));
+return 0;
+ }
+long fun(int n)
+{
+    int i,j,s;
+    s=1;
+for(i=2;i<=n;i++){
+    for(j=2;j<=i/2+1;j++){
+        if(i%j==0)
+            break;
+    }
+    if(j>=i/2+1){
+        s=s*i;
+    }
+}
+    return s;
+}
