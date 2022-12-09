@@ -31,58 +31,46 @@ int main(void)
     scanf("%d",&T);
     for( i=0;i<T;i++)
     {
-            scanf("%d",&y);
-            m=y%10*10+y/10%10;//12
-            d=y/100%10*10+y/1000;//02,2
-                switch(m){
-                    		case 1:	 case 3:	 case 5:	 case 7:	 case 8:	 case 10:	 case 12:
-if(d<=31)
-                                printf("%d",10000*y+100*m+d);else printf("none");
-                                break;
-                    		case 4:	 case 6:	case 9:	case 11:
-if(d<=30)
-                                printf("%d",10000*y+100*m+d);
+       scanf("%d",&y);
+       m=y%10*10+y/10%10;//12
+       d=y/100%10*10+y/1000;//02,2
+       switch(m){
+                    case 1:
+		    		case 3:
+					case 5:	
+					case 7:
+					case 8:	 
+					case 10:
+			    	case 12:
+       						if(d<=31)
+                            printf("%d",10000*y+100*m+d);
+							else printf("none");
+                            break;
+                    case 4:
+					case 6:	
+					case 9:
+					case 11:
+					        if(d<=30)
+                            printf("%d",10000*y+100*m+d);
+                            else printf("none");
+                            break;
+                    case 2:if(y%400==0||(y%4==0&&y%100!=0))
+                            {
+                                if(d<=29)
+                               	printf("%d",10000*y+100*m+d);
                                 else printf("none");
-                                break;
-                    		case 2:if(y%400==0||(y%4==0&&y%100!=0))
-{
-                               		 if(d<=29)
-                                	printf("%d",10000*y+100*m+d);
-                                	else printf("none");
-                        		}
-                        		else
-{
+                        	}
+                        	else
+                            {
                                 	if(d<=28)
-                               		 printf("%d",10000*y+100*m+d);
+                               	    printf("%d",10000*y+100*m+d);
                                 	else  printf("none");
-                    			}
+                    		}
                                 break;
-                    		default:
+                    default:
                             printf("none");
-                }
+                         }
         if(i<T-1)printf("\n");
-    }
-    return 0;
-}
-//方法2：
-
-#include<stdio.h>
-int main()
-{
-    int T,a,b,c,d,f,e,i;
-    scanf("%d",&T);
-    for(i=1;i<=T;i++)
-    {
-        scanf("%d",&a);
-        b=a/%10;
-        c=a/10%10;
-        d=a/100%10;
-        e=a/1000;
-        f=b*10+c;
-        if(f<=12&&f>0&&d*10+e<=31)
-            printf("%d%d%d%d%d\n",a,b,c,d,e);
-        else
-            printf("none\n");
     }
     return 0;
 }
