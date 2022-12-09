@@ -71,6 +71,39 @@ while((ch=getchar())!='=')
 printf("%d\n",r);
 return 0;
 }
+//法三
+#include <stdio.h>
+int main()
+{
+int r;
+scanf("%d",&r);
+char ch;
+while((ch=getchar())!='=')
+{   int num;
+    scanf("%d",&num);
+    switch(ch){
+	
+    case '+': r+=num;break;
+    case '-':  r-=num;break;
+    case '*':  r*=num;break;
+    case '/': 
+        if(num==0)
+		{
+            printf("ERROR\n");
+            return 0;
+        }
+        r/=num;
+        break;
+   
+    default:
+        printf("ERROR\n");
+        return 0;
+              }  
+} 
+
+printf("%d\n",r);
+return 0;
+}
 //7-2 解一元一次方程
 /*
 7-2 解一元一次方程
