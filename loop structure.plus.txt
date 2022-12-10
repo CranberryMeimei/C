@@ -474,7 +474,7 @@ int f(int n)
 #include<math.h>
 int main()
 {
-    int n,d,i,t,sum=0;
+    int n,d,i,ii,t,sum=0;
     int a,b;
     int mask;
     scanf("%d",&n);//3
@@ -486,12 +486,13 @@ int main()
     {
         sum=0;
         mask=a;
+        ii=i;
         while(mask>0)
-        {//153
-            d=i/mask;//1   5        3
+        {         
+            d=ii/mask;//1   5        3
             t=d*d*d;//1    125       27
             sum+=t;//1     +125   +27
-            i%=mask;//53    3        3
+            ii%=mask;//53    3        3
             mask/=10;//10    1        0
         }
         if(sum==i)
