@@ -1,0 +1,170 @@
+/*6-1 函数实验题目1：定义函数，判断一个数字出现的次数
+分数 5
+作者 叶青
+单位 长春理工大学
+定义一个函数 ,统计一个整数中，某个数字出现的次数
+
+函数接口定义：
+int  fun (int  number , int  digit)
+number是任意长度的整数，digit是1~9之间的一个数字，函数返回 number中digit出现的次数
+输入样例1：
+21325,2
+输出样例1：
+2
+输入样例2：
+0,0
+输出样例2：
+1
+
+裁判测试程序样例：
+在这里给出函数被调用进行测试的例子。例如：
+#include <stdio.h>
+
+int fun(int number,int digit)
+
+int main()
+{
+
+  int N, D;
+
+  scanf("%d,%d", &N, &D);
+
+  printf("%d", fun(N, D));
+
+  return 0;
+
+}
+int fun(int number,int digit)
+{
+    int i,t,d,mask=1,count=0;
+    t=number;
+    while(t>9)
+    {
+        t/=10;
+        mask*=10; 
+    }
+    while(mask>0)
+    {
+        d=number/mask;
+        if(d==digit)
+        {
+            count++;
+        }
+        number%=mask;
+        mask/=10;
+    }
+    return count;
+}
+
+/* 6-2 输出每个月的天数
+分数 5
+作者 颜晖-历年试卷
+单位 浙大城市学院
+本题要求实现一个简单函数，能计算给定的年份和月份的天数。使得可以利用该函数，输出给定年份中每个月的天数。其中1、3、5、7、8、10、12月有31天，4、6、9、11月有30天，2月平年有28天，闰年有29天。判断闰年的条件是：能被 4 整除但不能被 100 整除，或者能被 400 整除。
+
+函数接口定义：
+int MonthDays(int year, int month);
+其中year和month是用户传入的参数，如果1≤ month≤12，该函数必须返回year年month月的天数。
+输入样例1：
+2000
+输出样例1：
+31 29 31 30 31 30 31 31 30 31 30 31
+输入样例2：
+2001
+输出样例2：
+31 28 31 30 31 30 31 31 30 31 30 31
+
+裁判测试程序样例：
+#include <stdio.h>
+
+int MonthDays(int year, int month);
+
+int main()
+{
+    int ndays, month, year;
+
+    scanf("%d", &year);
+    for(month = 1; month <= 12; month++){
+        ndays = MonthDays(year, month);
+        printf("%d ", ndays);
+    }
+
+    return 0;
+}
+
+/* 你的代码将被嵌在这里 */
+int MonthDays(int year,int month)
+{
+    int ret;
+    switch(month)
+    {
+        case 1:
+        case 3:
+        case 5:
+        case 7:
+        case 8:
+        case 10:
+        case 12:
+            ret=31;
+            break;
+        case 2:
+            if(year%4==0&&year%100!=0||year%400==0)
+                ret=29;
+            else
+                ret=28;
+            break;
+        default:
+            ret=30;
+            break;
+    }
+    return ret;
+}
+/*
+6-3 使用函数求最大公约数
+分数 5
+作者 张高燕
+单位 浙大城市学院
+本题要求实现一个计算两个数的最大公约数的简单函数。
+
+函数接口定义：
+int gcd( int x, int y );
+其中x和y是两个正整数，函数gcd应返回这两个数的最大公约数。
+输入样例：
+32 72
+输出样例：
+8
+裁判测试程序样例：
+*/
+
+
+#include <stdio.h>
+
+int gcd( int x, int y );
+
+int main()
+{
+    int x, y;
+    
+    scanf("%d %d", &x, &y);
+    printf("%d\n", gcd(x, y));
+    
+    return 0;
+}
+int gcd(int x,int y)
+{
+    int ret,r,t;
+        if(x<y)
+        {
+            t=x;
+            x=y;
+            y=t;
+        }
+    r=x%y;
+    while(r!=0)
+    {
+         x=y;
+         y=r;   
+        r=x%y;
+    }
+ return y;
+}
