@@ -46,3 +46,5 @@ C/function.txt
 6-1 函数实验题目1：定义函数，判断一个数字出现的次数
 6-2 输出每个月的天数
 6-3 使用函数求最大公约数
+selective structure.txt
+倒序输出
