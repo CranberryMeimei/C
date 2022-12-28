@@ -1,0 +1,36 @@
+#include<stdio.h>
+#define max 10//定义符号常量max 
+int main()
+{
+	int i,maxindex,k,n,temp;
+	int a[max];
+	
+	printf("enter n:");//提示输入n 
+	scanf("%d",&n);
+	printf("enter %d digit :",n);//提示输入n个数 
+	
+	for(i=0;i<n;i++)//将输入数依次赋给数a的n个元素a[0]~a[n-1] 
+	{
+		scanf("%d",&a[i]);
+	}
+	//对n个数排序 
+	for(k=0;k<n-1;k++)
+	{
+		maxindex=k;//maxindex存放最大值所在的下标 
+		for(i=k+1;i<n;i++)//寻找最大值所在下标 
+		{
+			if(a[i]>a[maxindex])
+			maxindex=i;
+		}
+		temp=a[maxindex];//最小元素与下标为k的元素交换 
+		a[maxindex]=a[k];
+		a[k]=temp;
+			
+	}
+	//输出n个数组元素的值 
+	printf("after sorted:");
+	for(i=0;i<n;i++)
+	{
+		printf("%d ",a[i]);
+	}
+}

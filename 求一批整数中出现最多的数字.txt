@@ -1,0 +1,30 @@
+#include<stdio.h> 
+int main()
+{
+        int n,i,time[10]={0},temp,max=0;
+        printf("input n:");
+		scanf("%d",&n);
+		printf("input %d digits:",n);
+		for(i=0;i<n;i++)
+		{
+			scanf("%d",&temp);
+			while(temp!=0)
+			{
+				time[temp%10]++;
+				temp/=10;
+			}
+		}
+		for(i=0;i<10;i++)
+		{
+			if(max<time[i])
+			max=time[i];
+		}
+		printf("出现最多次数 %d 次的数字是:", max);
+		for(i=0;i<10;i++)
+		{
+			if(time[i]==max)
+			printf("%d ",i);
+		} 
+	
+		           
+}               
