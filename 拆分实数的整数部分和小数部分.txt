@@ -1,0 +1,17 @@
+#include<stdio.h>
+void splitfloat(float x,int *intpart,float *fracpart);
+int main()
+{
+	int intpart;
+	float x,fracpart;
+	
+	scanf("%f",&x);
+	splitfloat(x,&intpart,&fracpart);
+	printf("intpart=%d fracpart=%f",intpart,fracpart);
+	
+} 
+void splitfloat(float x,int *intpart,float *fracpart)
+{
+	*intpart=(int)x;
+	*fracpart=x-*intpart;
+}

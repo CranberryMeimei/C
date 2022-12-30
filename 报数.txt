@@ -1,0 +1,77 @@
+//by myself
+#include<stdio.h>
+int main()
+{
+	int i,m,n,a[80],t,count=0,no=1;
+	printf("input n and m:");
+	scanf("%d%d",&n,&m);
+	for(i=0;i<n;i++)
+	{
+		a[i]=i+1;
+	}
+	i=0;
+	while(no<n)
+	{
+	
+		if(count==m-1&&a[i]!=0)
+		{
+			printf("No%d:%d\n",no,a[i]);		
+			count=0;
+			a[i]=0;	
+			no++;
+		}
+		if(a[i]!=0&&count!=m-1)
+		{
+			count++;	
+		}
+		i++;
+		if(i>n-1)
+		i=0;
+
+	}
+	for(i=0;i<n;i++)
+	{
+		if(a[i]!=0)
+		printf("last No is:%d",a[i]);
+	}
+}
+//网上答案
+#include <stdio.h>
+int main(void)
+{
+	// 习题(8.3.4)
+	/*
+	报数：有 n 个人图成一圈，按顺序从 1 到 n 编好号。从第一个人开始报数，报到 m（m<n）的人退出圈子，
+	下个人从 1  开始报数，报到 m 的人退出圈子。 如此下去，直到留下最后一个人。
+	输入整数 n 和 m ，并按退出顺序输出退出圈子的人的编号。
+	*/
+	int count, i, m, n, no;
+	int num[50];
+	int *p;
+	printf("input n and m: ");
+	scanf("%d%d", &n, &m);
+	for (i = 0; i < n; i++)
+		num[i] = i + 1;
+	p = num;
+	count = no = 0;
+	while (no < n - 1)
+	{
+		if (*p != 0)
+			count++;
+		if (count == m)
+		{
+			no++;
+			printf("No%d: %d\n", no, *p);
+			*p = 0;
+			count = 0;
+		}
+		p++;
+		if (p == num + n)//注意理解
+			p = num;
+	}
+	p = num;
+	while (*p == 0)
+		p++;
+	printf("Last No is: %d\n", *p);
+	return 0;
+}

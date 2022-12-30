@@ -1,0 +1,73 @@
+//by myself
+#include<stdio.h>
+void  move(int a[],int n,int m);
+int main()
+{
+	int n,m,a[80],i;
+	printf("input n,m:");
+	scanf("%d%d",&n,&m);
+	for(i=0;i<n;i++)
+	{
+		scanf("%d",&a[i]);
+	}
+    move(a,n,m);
+}//将a数组中的的数字转到b数组
+void  move(int a[],int n,int m)
+{
+	int i=0,k=0,b[80]={0};
+	while(i<n)
+	{
+		if((i+m)<n)
+		{
+			b[i+m]=a[i];
+			i++;
+		}
+		else
+		{
+			b[k]=a[i];
+			k++;
+			i++;
+		}
+		
+	}
+	for(i=0;i<n;i++)
+	{
+		printf("%d ",b[i]);
+	}
+}
+//网上答案
+#include <stdio.h>
+void mov(int *x, int n, int m);
+int main(void)
+{
+	// 习题(8.3.3)
+	/*
+	循环后移：有 n 个整数，使前面各数顺序向后移 m 个位置，移出的数再从开头移入。
+	编写一个函数实现以上功能，在主函数中输入 n 个整数并输出调整后的 n 个数。
+	*/
+	int i, m, n;
+	int a[80];
+	printf("input n,m:");
+	scanf("%d%d", &n, &m);
+	printf("input %d number:\n", n);
+	for (i = 0; i < n; i++)
+		scanf("%d", &a[i]);
+	mov(a, n, m);
+	printf("After move: ");
+	for (i = 0; i < n; i++)
+		printf("%d ", a[i]);
+	printf("\n");
+	return 0;
+}
+/*函数mov(x,m)实现循环移动的功能,函数形参x的类型是整型指针,形参n和m的类型是int, 函数的类型是void。 */
+void mov(int *x, int n, int m)
+{
+	int i, j, k;
+	for (i = 1; i <= m; i++)
+	{
+		k = x[n - 1];
+		for (j = n - 1; j > 0; j--)
+			x[j] = x[j - 1];
+		x[0] = k;
+	}
+}

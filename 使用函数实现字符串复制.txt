@@ -1,0 +1,58 @@
+//by myself
+#include<stdio.h>
+#include<string.h>
+void strmcpy(char *s,char *t,int m);
+int main()
+{
+	char s[80],t[80];
+	int m;
+	printf("input string t:");
+	scanf("%s",t);
+	printf("input number m:");
+	scanf("%d",&m);
+	strmcpy(s,t,m);
+	
+}
+void strmcpy(char *s,char *t,int m)
+{
+	strcpy(s,t+m-1);
+	printf("%s",s);
+}
+//网上答案
+#include <stdio.h>
+#include <string.h>
+int main(void)
+{
+	// 习题(8.3.5)
+	/*
+	使用函数实现字符串复制：输入一个字符串 t 和一个正整数 m， 将字符串 t 中从第 m 个字符开始的全部字符复制到字符串 s 中，再输出字符串 s 。
+	要求自定义并调用函数 void strmcpy(char *s， char *t， int m)。
+	*/
+	char s[80], t[80];
+	int m;
+	void strmcpy(char *s, char *t, int m);
+	printf("input string t:\n");
+	gets(t);
+	printf("input number m:");
+	scanf("%d", &m);
+	getchar();
+	if (strlen(t) < m)
+		printf("error input");
+	else
+	{
+		strmcpy(s, t, m);
+		puts(s);
+	}
+	return 0;
+}
+void strmcpy(char *s, char *t, int m)//重点理解
+{
+	t = t + m - 1;
+	while (*t != '\0')
+	{
+		*s = *t;
+		s++;
+		t++;
+	}
+	*s = '\0';
+}

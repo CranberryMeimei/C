@@ -1,0 +1,28 @@
+#include<stdio.h>
+int search(int list[],int n,int x);
+int main()
+{
+	int list[10],n,x,i,t;
+	printf("enter n:");
+	scanf("%d",&n);
+	printf("enter %d number:\n",n);
+	for(i=0;i<n;i++)
+	{
+		scanf("%d",&list[i]);
+	}
+	printf("enter x:");
+	scanf("%d",&x);
+	t=search(list,n,x);
+	if(t!=-1)
+	printf("index=%d\n",t);
+	else
+	printf("Not found");
+}
+int search(int list[],int n,int x)
+{
+	int i;
+	for (i = 0; i < n; i++)
+		if (list[i] == x)
+			return i;
+	return -1;
+}
