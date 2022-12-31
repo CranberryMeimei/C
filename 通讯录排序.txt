@@ -1,0 +1,70 @@
+//by myself
+#include <stdio.h>
+#include<string.h>
+void sort(struct address_list a[],int n);
+struct birth
+{
+	int year;
+	int month;
+	int day;
+};
+struct address_list
+{
+	char name[10];		  
+	struct birth birthday; 
+	char phone[15];		   
+	char address[50];	  
+};
+int main()
+{
+	int i, n;
+	struct address_list people[10];
+	printf("input n:");
+	scanf("%d", &n);
+	for (i = 0; i < n; i++)
+	{
+		printf("请输入第 %d 个人的信息: 姓名 年 月 日 手机号 地址\n", i + 1);
+		scanf("%s%d%d%d%s%s", people[i].name, &people[i].birthday.year, &people[i].birthday.month, &people[i].birthday.day, people[i].phone,people[i].address);
+	}
+	printf("通讯录信息：\n");
+	sort(people, n);
+	for (i = 0; i < n; i++)
+		printf("%s\t%d\t%d\t%d\t%s\t%s\n", people[i].name, people[i].birthday.year, people[i].birthday.month,people[i].birthday.day, people[i].phone, people[i].address);
+	return 0;
+}
+void sort(struct address_list a[],int n)
+{
+	int i,j,index;
+	struct address_list temp;
+	for(i=1;i<n;i++)
+	{
+		for(j=0;j<n-i;j++)
+		{
+			if(a[j].birthday.year>a[j+1].birthday.year)
+			{
+				temp=a[j];
+				a[j]=a[j+1];
+				a[j+1]=temp;
+			}
+			else if(a[j].birthday.year==a[j+1].birthday.year)
+			{
+				if (a[j].birthday.month > a[j + 1].birthday.month)
+				{
+					temp=a[j];
+					a[j]=a[j+1];
+					a[j+1]=temp;
+				}
+				else if(a[j].birthday.month == a[j + 1].birthday.month)
+				{
+					if (a[j].birthday.day> a[j + 1].birthday.day)
+					{
+						temp=a[j];
+						a[j]=a[j+1];
+						a[j+1]=temp;
+					}
+				}
+			}
+		}
+		
+	}
+}

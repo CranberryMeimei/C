@@ -1,0 +1,105 @@
+//by myself
+#include <stdio.h>
+#include<string.h>
+#define NUMBER 10
+int set_grade(struct student *p);
+struct student
+{
+	int num;
+	char name[15];
+	int score;
+	char grade[1];
+
+};
+int main()
+{
+	struct student a[NUMBER];
+	int i,count;
+	printf("input the student's number,name and score:\n");
+	for(i=0;i<NUMBER;i++)
+	{
+		printf("No %d:",i+1);
+		scanf("%d%s%d",&a[i].num,a[i].name,&a[i].score);
+		count=set_grade(&a[i]);
+	}
+	printf("the count (<60):%d\n",count);
+	printf("the student grade:\n");
+	for(i=0;i<NUMBER;i++)
+	printf("%d\t%s\t%s\n",a[i].num,a[i].name,a[i].grade);
+	
+	
+}
+int set_grade(struct student *p)
+{
+	int i,n=NUMBER,count=0;
+	for(i=0;i<n;i++)
+	{
+		if(p->score>=85&&p->score<=100)
+		strcpy(p->grade,"A");
+        else if(p->score>=70&&p->score<=84)
+		strcpy(p->grade,"B");
+		else if(p->score>=60&&p->score<=69)
+		strcpy(p->grade,"C");
+		else
+		{
+			strcpy(p->grade,"D");
+			count++;
+		}
+	}
+	return count;
+}
+//网上答案
+#include <stdio.h>
+#define N 10
+struct student
+{
+	int num;
+	char name[20];
+	int score;
+	char grade;
+};
+int set_grade(struct student *p);
+int main()
+{
+	// 习题(9.3.6)
+	/*
+	按等级统计学生成绩：输入 10 个学生的学号、姓名和成绩，输出学生的成绩等级和不及格人数。
+	每个学生的记录包括学号、姓名、成绩和等级，要求定义和调用函数set_grade()，根据学生成绩设置其等级，并统计不及格人数，
+	等级设置： 85~100 为 A ，70~84 为 B ， 60~69 为 C ， 0~59 为 D。
+	*/
+	struct student stu[N], *ptr;
+	int i, count;
+	ptr = stu;
+	printf("input the student's number, name and score: \n");
+	for (i = 0; i < N; i++)
+	{
+		printf("No %d:", i + 1);
+		scanf("%d%s%d", &stu[i].num, stu[i].name, &stu[i].score);
+	}
+	count = set_grade(ptr);
+	printf("The count (<60): %d\n", count);
+	printf("The student grade:\n");
+	for (i = 0; i < N; i++)
+		printf("%d\t%s\t%c\n", stu[i].num, stu[i].name, stu[i].grade);
+	return 0;
+}
+//等级设置
+int set_grade(struct student *p)
+{
+	int i, n = 0;
+	for (i = 0; i < N; i++, p++)
+	{
+		if (p->score >= 85)
+			p->grade = 'A';
+		else if (p->score >= 70)
+			p->grade = 'B';
+		else if (p->score >= 60)
+			p->grade = 'C';
+		else
+		{
+			p->grade = 'D';
+			n++;
+		}
+	}
+	return n;
+}

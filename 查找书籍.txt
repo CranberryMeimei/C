@@ -1,0 +1,34 @@
+//by myself
+#include <stdio.h>
+#define NUMBER 10
+struct book
+{
+	char name[30];
+	float price;
+};
+int main()
+{
+	int max=0,min=0,i;
+	struct book test [NUMBER];
+	printf("input 10 book's name and price:\n");
+	for(i=0;i<NUMBER;i++) 
+	{
+		printf("NO%d:",i+1);
+		gets(test[i].name);
+		scanf("%f",&test[i].price);
+		getchar();//注意理解：scanf和gets()混用
+	}
+	for(i=0;i<NUMBER;i++)
+	{
+		if(test[max].price<test[i].price)
+		{
+			max=i;
+		}
+		if(test[min].price>test[i].price)
+		{
+			min=i;
+		}
+	}
+	printf("max price :%.2f %s\n",test[max].price,test[max].name);
+	printf("min price :%.2f %s\n",test[min].price,test[min].name);
+}
